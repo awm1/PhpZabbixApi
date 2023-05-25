@@ -1247,7 +1247,9 @@ interface ZabbixApiInterface
 
     const XML_TAG_TRIGGER = 'trigger';
 
-    const ZABBIX_API_VERSION = '3.0.0';
+    const ZABBIX_API_VERSION_3_0_0 = '3.0.0';
+
+    const ZABBIX_API_VERSION_6_4_0 = '6.4.0';
 
     const ZABBIX_COPYRIGHT_FROM = '2001';
 

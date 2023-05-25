@@ -106,6 +106,11 @@ final class ZabbixApi implements ZabbixApiInterface, TokenCacheAwareInterface
     private $requestOptions = [];
 
     /**
+     * @var string|null
+     */
+    private $targetApiVersion = ZabbixApiInterface::ZABBIX_API_VERSION_3_0_0;
+
+    /**
      * @var CacheItemPoolInterface|null
      */
     private $tokenCache;
@@ -118,9 +123,19 @@ final class ZabbixApi implements ZabbixApiInterface, TokenCacheAwareInterface
      * @param string|null $httpPassword Password for HTTP basic authorization
      * @param string|null $authToken Already issued auth token (e.g. extracted from cookies)
      * @param array $clientOptions Client options
+     * @param string $targetApiVersion target API version whose definition must be supported
      */
-    public function __construct($apiUrl = null, $user = null, $password = null, $httpUser = null, $httpPassword = null, $authToken = null, ClientInterface $client = null, array $clientOptions = [])
-    {
+    public function __construct(
+        $apiUrl = null,
+        $user = null,
+        $password = null,
+        $httpUser = null,
+        $httpPassword = null,
+        $authToken = null,
+        ClientInterface $client = null,
+        array $clientOptions = [],
+        $targetApiVersion = ZabbixApiInterface::ZABBIX_API_VERSION_3_0_0
+    ) {
         if (null !== $client && !empty($clientOptions)) {
             throw new \InvalidArgumentException('If argument 7 is provided, argument 8 must be omitted or passed with an empty array as value');
         }
@@ -164,6 +179,20 @@ final class ZabbixApi implements ZabbixApiInterface, TokenCacheAwareInterface
         if (null !== $user && null !== $password) {
             $this->user = $user;
             $this->password = $password;
+        }
+
+        if (null !== $targetApiVersion) {
+            $targetApiVersion = (string) $targetApiVersion;
+
+            if (!empty($targetApiVersion)) {
+                $versionComparison = version_compare($this->targetApiVersion, $targetApiVersion);
+
+                if ($versionComparison < 0) { // require support of newer version
+                    $this->targetApiVersion = $targetApiVersion;
+                } elseif ($versionComparison > 0) {
+                    throw new Exception('Target API version has to be at least '.$this->targetApiVersion);
+                }
+            }
         }
     }
 
@@ -8698,7 +8727,12 @@ final class ZabbixApi implements ZabbixApiInterface, TokenCacheAwareInterface
         // No cached token in use, login.
         if (!$fromCache || null === $this->authToken) {
             // Login to get the auth token.
-            $params = $this->getRequestParamsArray(['user' => $this->user, 'password' => $this->password]);
+            if (version_compare($this->targetApiVersion, self::ZABBIX_API_VERSION_6_4_0) < 0) {
+                $userParamName = 'user';
+            } else {
+                $userParamName = 'username';
+            }
+            $params = $this->getRequestParamsArray([$userParamName => $this->user, 'password' => $this->password]);
             $this->authToken = $this->userLogin($params);
 
             if (null !== $tokenCacheKey) {
