@@ -7319,6 +7319,160 @@ interface ZabbixApiInterface
     public function templatescreenitemTableName($params = [], $arrayKeyProperty = null, $assoc = true);
 
     /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.create".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupCreate($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.delete".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupDelete($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.get".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupGet($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.massadd".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupMassAdd($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.massremove".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupMassRemove($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.massupdate".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupMassUpdate($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
+     * Requests the Zabbix API and returns the response of the method "templategroup.update".
+     *
+     * The $params Array can be used, to pass parameters to the Zabbix API.
+     * For more information about these parameters, check the Zabbix API
+     * documentation at https://www.zabbix.com/documentation/.
+     *
+     * The $arrayKeyProperty can be used to get an associative instead of an
+     * indexed array as response. A valid value for the $arrayKeyProperty is
+     * is any property of the returned JSON objects (e.g. "name", "host",
+     * "hostid", "graphid", "screenitemid").
+     *
+     * @param mixed $params Zabbix API parameters
+     * @param string|null $arrayKeyProperty Object property for key of array
+     * @param bool $assoc Return the value as an associative array instead of an instance of stdClass
+     *
+     * @throws Exception
+     *
+     * @return mixed
+     */
+    public function templategroupUpdate($params = [], $arrayKeyProperty = null, $assoc = true);
+
+    /**
      * Requests the Zabbix API and returns the response of the method "trend.get".
      *
      * The $params Array can be used, to pass parameters to the Zabbix API.
